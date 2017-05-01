@@ -1,6 +1,9 @@
 from math import floor
 
 three_digit_numbers_list = [value for value in range(100, 1000)]
+greater_palindrome = 0
+first_multi = 0
+second_multi = 0
 start = 0
 middle = floor(len(three_digit_numbers_list)/2)
 end = len(three_digit_numbers_list)
@@ -17,16 +20,19 @@ def multiple_is_palindrome(x, y):
 def find_greater_palindrome(numbers_list, start, end):
 
 	hasPalindrome = False
+	global greater_palindrome
+	global first_multi
+	global second_multi
 
-	for x in range(numbers_list[start], numbers_list[end]):
-		for y in range(numbers_list[start], numbers_list[end]):
+	for x in numbers_list:
+		for y in numbers_list:
 			isPalindrome, multiple = multiple_is_palindrome(x, y)
-
+		 
 			if isPalindrome :
 				hasPalindrome = True
-				greater_palindrome = multiple
-				first_multi = x
-				second_multi = y
+				greater_palindrome = multiple if multiple > greater_palindrome else greater_palindrome
+				first_multi = x if x > first_multi else first_multi
+				#second_multi = y if y > second_multi else second_multi
 
 	return hasPalindrome, greater_palindrome, first_multi, second_multi
  
@@ -40,6 +46,32 @@ hasPalindrome, greater_palindrome, first_multi, second_multi = find_greater_pali
 if not hasPalindrome :
 	hasPalindrome, greater_palindrome, first_multi, second_multi = find_greater_palindrome(l, start, end)
 
-print("primeiro multiplo = ", first_multi)
-print("segundo multiplo = ", second_multi)
+#print("primeiro multiplo = ", first_multi)
+#print("segundo multiplo = ", second_multi)
 print("Maior palindromo = ", greater_palindrome)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
