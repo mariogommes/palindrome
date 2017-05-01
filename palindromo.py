@@ -28,11 +28,11 @@ def find_greater_palindrome(numbers_list, start, end):
 		for y in numbers_list:
 			isPalindrome, multiple = multiple_is_palindrome(x, y)
 		 
-			if isPalindrome :
+			if isPalindrome and multiple > greater_palindrome:
 				hasPalindrome = True
-				greater_palindrome = multiple if multiple > greater_palindrome else greater_palindrome
-				first_multi = x if x > first_multi else first_multi
-				#second_multi = y if y > second_multi else second_multi
+				greater_palindrome = multiple 
+				first_multi = x 
+				second_multi = y 
 
 	return hasPalindrome, greater_palindrome, first_multi, second_multi
  
@@ -46,8 +46,8 @@ hasPalindrome, greater_palindrome, first_multi, second_multi = find_greater_pali
 if not hasPalindrome :
 	hasPalindrome, greater_palindrome, first_multi, second_multi = find_greater_palindrome(l, start, end)
 
-#print("primeiro multiplo = ", first_multi)
-#print("segundo multiplo = ", second_multi)
+print("primeiro multiplo = ", first_multi)
+print("segundo multiplo = ", second_multi)
 print("Maior palindromo = ", greater_palindrome)
 
 
